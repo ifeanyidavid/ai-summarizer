@@ -1,3 +1,4 @@
+import APIError from "~/server/api/middleware/error";
 import { GeminiService } from "../../services/ai/gemini";
 import type { AIService } from "../../types/ai-service";
 
@@ -8,7 +9,7 @@ export class AIFactory {
   private constructor() {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      throw new Error("GEMINI_API_KEY is not set");
+      throw new APIError(500, "GEMINI_API_KEY is not set");
     }
     this.aiService = new GeminiService(apiKey);
   }

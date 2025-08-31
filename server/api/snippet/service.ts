@@ -5,26 +5,38 @@ export default class SnippetService {
   constructor(private readonly aiService: AIService) {}
 
   async createSnippet(text: string) {
-    const summary = await this.aiService.summarize(text);
-    return prisma.snippet.create({
-      data: {
-        text,
-        summary,
-        published: true,
-      },
-    });
+    try {
+      const summary = await this.aiService.summarize(text);
+      return prisma.snippet.create({
+        data: {
+          text,
+          summary,
+          published: true,
+        },
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getSnippet(id: string) {
-    return prisma.snippet.findUnique({
-      where: { id },
-    });
+    try {
+      return prisma.snippet.findUnique({
+        where: { id },
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 
   async getAllSnippets() {
-    return prisma.snippet.findMany({
-      where: { published: true },
-      orderBy: { createdAt: "desc" },
-    });
+    try {
+      return prisma.snippet.findMany({
+        where: { published: true },
+        orderBy: { createdAt: "desc" },
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 }

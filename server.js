@@ -5,12 +5,16 @@ import morgan from "morgan";
 // Short-circuit the type-checking of the built output.
 const BUILD_PATH = "./build/server/index.js";
 const DEVELOPMENT = process.env.NODE_ENV === "development";
-const PORT = Number.parseInt(process.env.PORT || "3000");
+const PORT = Number.parseInt(process.env.UI_PORT || "3030");
 
 const app = express();
 
 app.use(compression());
 app.disable("x-powered-by");
+
+app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
+  res.status(204).send();
+});
 
 if (DEVELOPMENT) {
   console.log("Starting development server");
@@ -43,5 +47,5 @@ if (DEVELOPMENT) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`UI server is running on http://localhost:${PORT}`);
 });
