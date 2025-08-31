@@ -4,8 +4,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import APIError from "../middleware/error";
 import * as handler from "./handler";
 import SnippetService from "./service";
-
-// Import our mocks
 import "../__mocks__/ai";
 
 vi.mock("./service");
