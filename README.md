@@ -150,13 +150,76 @@ curl --location 'http://localhost:3000/api/snippets' \
 }'
 ```
 
+## API Documentation
+
+### Health Check
+
+````bash
+GET /api/health
+
+# Response 200 OK
+{
+    "status": "ok"
+}
+
+POST /api/snippets
+
+# Request Headers
+Content-Type: application/json
+
+# Request Body
+{
+    "text": "Your text to summarize here"
+}
+
+# Response 201 Created
+{
+    "id": "65a4f3c2b832a8d4e9b7c123",
+    "text": "Your text to summarize here",
+    "summary": "AI-generated summary of your text",
+    "published": false,
+    "createdAt": "2025-09-01T10:30:00.000Z",
+    "updatedAt": "2025-09-01T10:30:00.000Z"
+}
+
+# Response 400 Bad Request (when text is missing)
+{
+    "status": "error",
+    "message": "Text is required"
+}
+
+# Response 500 Internal Server Error (when AI service fails)
+{
+    "status": "error",
+    "message": "Failed to generate summary: Error details here"
+}
+
+# 400 Bad Request (Invalid input)
+{
+    "status": "error",
+    "message": "Validation error details"
+}
+
+### Common Error Response
+# 404 Not Found
+{
+    "status": "error",
+    "message": "Resource not found"
+}
+
+# 500 Internal Server Error
+{
+    "status": "error",
+    "message": "Internal server error"
+}
+
 ## Building for Production
 
 1. Build the client:
 
 ```bash
 npm run build
-```
+````
 
 2. Build the server:
 
@@ -189,6 +252,60 @@ npm start
 - `GEMINI_API_KEY`: Google Cloud Gemini API key
 - `API_PORT`: API server port (default: 3000)
 - `UI_PORT`: Frontend server port (default: 3030)
+
+## Post-Implementation Reflection
+
+### Trade-offs and Design Decisions
+
+1. **Monolithic Architecture**
+   - Chose a monolithic approach for simplicity and rapid development
+   - Trade-off: Less scalable but faster to build and easier to maintain for this scope
+   - Future: Could split into microservices as complexity grows
+
+2. **API Design**
+   - RESTful API for familiarity and broad client support
+   - Trade-off: Doesn't support real-time updates
+   - Future: Consider GraphQL for more flexible data fetching
+
+### Future Improvements
+
+1. **Authentication & Authorization**
+   - Implement JWT-based authentication
+   - Role-based access control for snippets
+   - Public/private snippet visibility
+   - User profiles and snippet ownership
+
+2. **Real-time Features**
+   - Server-Sent Events for streaming AI summaries
+
+3. **DevOps & Deployment**
+   - GitHub Actions CI pipeline for:
+     - Linting and type checking
+     - Running tests with coverage thresholds
+     - Building and testing Docker images
+     - Automated deployments
+
+4. **Performance & Monitoring**
+   - APM integration for performance monitoring
+   - Error tracking (e.g., Sentry)
+   - Request tracing for debugging
+
+5. **UI/UX Enhancements**
+   - Rich text editor for snippet input
+
+### Known Limitations
+
+1. **Scalability**
+   - No rate limiting on API endpoints
+   - Single instance deployment model
+   - Limited error recovery strategies
+
+2. **AI Integration**
+   - No fallback AI service provider
+   - Limited retry strategies for AI service failures
+   - No caching of AI responses
+
+The project prioritized getting a working product with core features while maintaining code quality. Future iterations would focus on scalability, reliability, and user experience enhancements.
 
 ## Contributing
 
