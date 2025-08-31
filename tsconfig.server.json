@@ -2,19 +2,31 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "baseUrl": ".",
-    "outDir": "./dist",
+    "outDir": "./server_build",
     "esModuleInterop": true,
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "noEmit": false,
-    "composite": true,
+    "composite": false,
     "strict": true,
     "types": ["node"],
-    "lib": ["ES2022"]
+    "lib": ["ES2022"],
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "paths": {
+      "~/*": ["./*"]
+    }
   },
-  "include": ["server/**/*", "vite.config.ts", "types/**/*"],
+  "include": [
+    "api/**/*",
+    "types/**/*",
+    "lib/**/*",
+    "prisma/**/*",
+    "prisma/generated/**/*"
+  ],
   "exclude": ["node_modules", "dist"]
 }

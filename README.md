@@ -28,12 +28,37 @@ npm run build
 
 ### Docker Deployment
 
-To build and run using Docker:
+The application can be run using Docker Compose, which will start both the frontend and API services.
+
+1. First, create a `.env` file with your environment variables:
 
 ```bash
-docker build -t my-app .
-
-docker run -p 3000:3000 my-app
+DATABASE_URL=your_database_url
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
-Make sure to deploy the output of `npm run build`# ai-summarizer
+2. Build and start the services:
+
+```bash
+docker compose up --build
+```
+
+This will:
+
+- Build the application
+- Start the API server on port 3000
+- Start the frontend server on port 3030
+- Set up all necessary environment variables
+
+To stop the services:
+
+```bash
+docker compose down
+```
+
+For development, you can still run the services individually:
+
+```bash
+npm run dev:frontend  # Runs frontend on port 3030
+npm run dev:api      # Runs API on port 3000
+```

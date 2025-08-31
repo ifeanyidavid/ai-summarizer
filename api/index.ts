@@ -2,8 +2,8 @@ import compression from "compression";
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import { errorHandler } from "./api/middleware/error";
-import routes from "./api/routes";
+import { errorHandler } from "./middleware/error.js";
+import routes from "./routes.js";
 
 const PORT = Number.parseInt(process.env.API_PORT || "3000");
 

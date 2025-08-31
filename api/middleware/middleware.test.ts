@@ -1,6 +1,6 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import type { Request, Response, NextFunction } from "express";
-import APIError, { errorHandler } from "../middleware/error";
+import type { NextFunction, Request, Response } from "express";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import APIError, { errorHandler } from "./error.js";
 
 describe("Error handling middleware", () => {
   let req: Partial<Request>;

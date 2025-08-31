@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
-import APIError from "../../../middleware/error";
-import type { AIService } from "../../../types/ai-service";
-import { getPrompt } from "../../../utils";
+import APIError from "../../../middleware/error.js";
+import type { AIService } from "../../../types/ai-service.js";
+import { getPrompt } from "../../../utils.js";
 
 export class GeminiService implements AIService {
   private readonly client: GoogleGenAI;

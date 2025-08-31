@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import type { AIService } from "../../../types/ai-service";
+import type { AIService } from "../../../types/ai-service.js";
 
 export class MockGeminiService implements AIService {
   readonly maxRetries: number = 3;

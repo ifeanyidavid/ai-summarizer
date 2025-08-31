@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import APIError from "../../../middleware/error";
-import { GeminiService } from "./index";
+import APIError from "../../../middleware/error.js";
+import { GeminiService } from "./index.js";
 
 vi.mock("@google/genai");
 vi.mock("../../../utils", () => ({

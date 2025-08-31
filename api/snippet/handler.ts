@@ -1,8 +1,8 @@
-import type { Request, Response, NextFunction } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { AIFactory } from "../services/ai";
-import SnippetService from "../snippet/service";
-import APIError from "../middleware/error";
+import APIError from "../middleware/error.js";
+import { AIFactory } from "../services/ai/index.js";
+import SnippetService from "./service.js";
 
 const aiService = AIFactory.getInstance().getAIService();
 const snippetService = new SnippetService(aiService);
@@ -53,4 +53,4 @@ const createSnippet = async (
   }
 };
 
-export { getAllSnippets, getSnippet, createSnippet };
+export { createSnippet, getAllSnippets, getSnippet };

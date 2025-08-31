@@ -1,5 +1,5 @@
-import type { AIService } from "../types/ai-service";
-import prisma from "../../../lib/prisma";
+import prisma from "../../lib/prisma.js";
+import type { AIService } from "../types/ai-service.js";
 
 export default class SnippetService {
   constructor(private readonly aiService: AIService) {}

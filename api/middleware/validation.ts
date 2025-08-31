@@ -1,6 +1,6 @@
-import type { Request, Response, NextFunction } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
-import APIError from "../middleware/error";
+import APIError from "./error.js";
 
 export const snippetPayloadSchema = {
   create: z.object({

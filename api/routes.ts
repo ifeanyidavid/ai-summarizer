@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import snippets from "./snippet/routes";
+import snippets from "./snippet/routes.js";
 
 const router: Router = express.Router();
 

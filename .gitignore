@@ -11,3 +11,7 @@
 .env.local
 .env.*.local
 /prisma/generated/prisma
+/dist
+/dist/
+server_build/
+build/

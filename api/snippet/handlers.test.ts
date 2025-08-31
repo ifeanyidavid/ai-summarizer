@@ -1,10 +1,10 @@
 import type { NextFunction, Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import APIError from "../middleware/error";
-import * as handler from "./handler";
-import SnippetService from "./service";
-import "../__mocks__/ai";
+import APIError from "../middleware/error.js";
+import * as handler from "./handler.js";
+import SnippetService from "./service.js";
+import "../__mocks__/ai.js";
 
 vi.mock("./service");
 

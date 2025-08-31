@@ -1,13 +1,6 @@
 import { Router } from "express";
-import {
-  snippetPayloadSchema,
-  validateBody,
-} from "../middleware/validation";
-import {
-  getAllSnippets,
-  getSnippet,
-  createSnippet,
-} from "../snippet/handler";
+import { snippetPayloadSchema, validateBody } from "../middleware/validation.js";
+import { createSnippet, getAllSnippets, getSnippet } from "./handler.js";
 
 const router = Router();
 

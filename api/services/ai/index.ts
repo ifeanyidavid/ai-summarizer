@@ -1,6 +1,6 @@
-import APIError from "~/server/api/middleware/error";
-import { GeminiService } from "../../services/ai/gemini";
-import type { AIService } from "../../types/ai-service";
+import APIError from "../../middleware/error.js";
+import type { AIService } from "../../types/ai-service.js";
+import { GeminiService } from "./gemini/index.js";
 
 export class AIFactory {
   private static instance: AIFactory;
