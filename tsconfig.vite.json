@@ -3,9 +3,11 @@
   "include": [
     ".react-router/types/**/*",
     "app/**/*",
-    "app/**/.server/**/*",
-    "app/**/.client/**/*",
-    "server/**/*"
+    "server/**/*",
+    "vitest.setup.ts",
+    "lib/**/*",
+    "prisma/**/*",
+    "components/**/*",
   ],
   "compilerOptions": {
     "composite": true,
@@ -18,9 +20,6 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "rootDirs": [".", "./.react-router/types"],
-    "paths": {
-      "~/*": ["./app/*"]
-    },
     "esModuleInterop": true,
     "resolveJsonModule": true
   }
