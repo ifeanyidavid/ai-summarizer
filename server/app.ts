@@ -14,8 +14,6 @@ export const app = express();
 app.use(
   createRequestHandler({
     build: async () => {
-      // During build time, this import is handled by vite
-      // @ts-ignore - virtual module that exists at runtime
       const build = await import("virtual:react-router/server-build");
       return build as unknown as ServerBuild;
     },
